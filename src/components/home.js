@@ -8,8 +8,7 @@ import { setLocalStorage, getLocalStorage } from '../services/local-storage-serv
 
 export default class Home extends Component {    
 
-  prepareData() { 
-    //prepare the data
+   componentDidMount(){
     let fiver=[...Array(4)];
     fiver.fill(5);
     let tenner=[...Array(15)];
@@ -17,11 +16,11 @@ export default class Home extends Component {
     let twenty=[...Array(7)];
     twenty.fill(20);    
     //set the following in local storage.
-    const cash= [fiver, tenner, twenty];
+    const cash= [fiver, tenner, twenty];   
     setLocalStorage('cash', cash);
+    setLocalStorage('overdraft',100);
    }
 
-     
 
       onChange = value => {
         if (value.length === 4) {      
@@ -30,8 +29,7 @@ export default class Home extends Component {
               setLocalStorage('balance', data);
               this.props.history.push(
                   {
-                      pathname:'/account',
-                      state: {balance: data}
+                      pathname:'/account'
                   }
               );
             } else {           

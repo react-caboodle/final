@@ -6,3 +6,6 @@ export const getLocalStorage =(key)=>
 
 export const removeLocalStorage = (key)=> 
     localStorage.removeItem(key);
+
+export const clearLocalStorage = () => 
+    localStorage.clear();

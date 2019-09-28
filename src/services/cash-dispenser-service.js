@@ -3,16 +3,18 @@ import { setLocalStorage, getLocalStorage, removeLocalStorage } from '../service
 
 export const cashDispenser = (target)=>{
     
+
 if (parseInt(target) % 5 != 0) return [];
-
-
     
 let cash = getLocalStorage('cash');
+
+
 let fiver=cash[0];
 let tenner=cash[1];
 let twenty=cash[2];
 
 cash = [fiver, tenner, twenty];
+
 const answer=[];
 
 //running sum/total

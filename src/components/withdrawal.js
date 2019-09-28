@@ -2,13 +2,20 @@ import React from 'react';
 import { cashDispenser } from '../services/cash-dispenser-service';
 
 //services
-import { setLocalStorage, getLocalStorage, removeLocalStorage } from '../services/local-storage-service';
+import { setLocalStorage, getLocalStorage, clearLocalStorage } from '../services/local-storage-service';
 
 export const Withdrawal = (props) => {
+    
     let amountToWithdraw=props.location.state.amount;
     let availableBalance=getLocalStorage('balance');
 
     if (availableBalance < amountToWithdraw) {
+        props.history.push({
+            pathname: '/overdraft',
+            state: {amount:amountToWithdraw, balance: availableBalance}
+            }
+        );
+        return null;
     }
     
     const answer = cashDispenser(amountToWithdraw);
@@ -19,7 +26,7 @@ export const Withdrawal = (props) => {
     }
 
     const noHandler = ()=>{
-        removeLocalStorage('balance');
+        clearLocalStorage();
         props.history.push('/goodbye');
     }
 

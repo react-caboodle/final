@@ -4,7 +4,6 @@ import React from 'react';
 import { getLocalStorage, setLocalStorage } from '../services/local-storage-service';
 
 export const Account = (props) => {
-  console.log('account ', props)
     const balance = getLocalStorage('balance');
     let amount=0;
 
